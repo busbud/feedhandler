@@ -1,0 +1,39 @@
+{
+  "name": "feedhandler",
+  "version": "1.0.0",
+  "description": "An extensible rss/rdf/atom parser",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/istanbul/lib/cli.js cover --verbose --print summary --dir $CIRCLE_ARTIFACTS/coverage node_modules/.bin/_mocha -- -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/busbud/feedparser"
+  },
+  "keywords": [
+    "rss",
+    "rdf",
+    "atom",
+    "parser",
+    "feed",
+    "htmlparser2",
+    "domparser"
+  ],
+  "author": "Mike Gradek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/busbud/feedparser/issues"
+  },
+  "homepage": "https://github.com/busbud/feedparser",
+  "dependencies": {
+    "domhandler": "2.3.0",
+    "domutils": "1.5.1",
+    "ramda": "0.10.0"
+  },
+  "devDependencies": {
+    "chai": "2.1.0",
+    "htmlparser2": "3.8.2",
+    "istanbul": "0.3.6",
+    "mocha": "2.1.0"
+  }
+}
