@@ -1,8 +1,6 @@
 # feedhandler
 
 [![Circle CI](https://circleci.com/gh/busbud/feedhandler/tree/master.svg?style=svg&circle-token=ef379600d241ad64c0d04e2f6eb56a4c2b6a4ecb)](https://circleci.com/gh/busbud/feedhandler/tree/master)
-[![SemVer]](http://semver.org)
-[![License]](https://github.com/busbud/feedhandler/blob/master/LICENSE)
 
 An extensible RSS/RDF/Atom feed parser for use with [html-parser2](https://www.npmjs.com/package/htmlparser2).
 
