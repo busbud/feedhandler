@@ -58,19 +58,21 @@ Running `parse` against the xml sample will return the following object:
 
 ```json
 {
-  type: "rss",
-  id: "",
-  title: "Liftoff News",
-  link: "http://liftoff.msfc.nasa.gov/",
-  description: "Liftoff to Space Exploration.",
-  updated: new Date("Tue, 10 Jun 2003 09:41:01 GMT"),
-  items: [{
-    id: "http://liftoff.msfc.nasa.gov/2003/06/03.html#item573",
-    title: "Star City",
-    link: "http://liftoff.msfc.nasa.gov/news/2003/news-starcity.asp",
-    description: "How do Americans get ready to work with Russians aboard the International Space Station? They take a crash course in culture, language and protocol at Russia's &lt;a href=\"http://howe.iki.rssi.ru/GCTC/gctc_e.htm\"&gt;Star City&lt;/a&gt;.",
-    pubDate: new Date("Tue, 03 Jun 2003 09:39:21 GMT"),
-    my_tag: "So glad I could sneak this new content in"
-  }]
+  "type": "rss",
+  "id": "",
+  "title": "Liftoff News",
+  "link": "http://liftoff.msfc.nasa.gov/",
+  "description": "Liftoff to Space Exploration.",
+  "updated": "2003-06-10T09:41:01.000Z",
+  "items": [
+    {
+      "id": "http://liftoff.msfc.nasa.gov/2003/06/03.html#item573",
+      "title": "Star City",
+      "link": "http://liftoff.msfc.nasa.gov/news/2003/news-starcity.asp",
+      "description": "How do Americans get ready to work with Russians aboard the International Space Station? They take a crash course in culture, language and protocol at Russia's &lt;a href=\"http://howe.iki.rssi.ru/GCTC/gctc_e.htm\"&gt;Star City&lt;/a&gt;.",
+      "pubDate": "2003-06-03T09:39:21.000Z",
+      "my_tag": "So glad I could sneak this new content in"
+    }
+  ]
 }
 ```
