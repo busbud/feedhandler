@@ -4,7 +4,9 @@
   "description": "An extensible rss/rdf/atom parser",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/istanbul/lib/cli.js cover --verbose --print summary --dir $CIRCLE_ARTIFACTS/coverage node_modules/.bin/_mocha -- -R spec"
+    "lcov": "node_modules/istanbul/lib/cli.js cover node_modules/.bin/_mocha --report lcovonly -- -R spec",
+    "circleci": "node_modules/istanbul/lib/cli.js cover --dir $CIRCLE_ARTIFACTS/coverage node_modules/.bin/_mocha -- -R spec",
+    "test": "node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",

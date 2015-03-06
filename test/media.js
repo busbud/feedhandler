@@ -7,11 +7,11 @@ var R = require('ramda');
 var htmlparser2 = require('htmlparser2');
 var FeedHandler = require('../index');
 
-describe('Extended feed tests', function(){
+describe('Basic feed with media extension tests', function(){
   var tests = {
     rss: {
       name: "RSS (2.0)",
-      file: "rss-example-extended.xml",
+      file: "rss-example-media.xml",
       expected: {
         type: "rss",
         id: "",
@@ -26,29 +26,15 @@ describe('Extended feed tests', function(){
           link: "http://liftoff.msfc.nasa.gov/news/2003/news-starcity.asp",
           description: "How do Americans get ready to work with Russians aboard the International Space Station? They take a crash course in culture, language and protocol at Russia's &lt;a href=\"http://howe.iki.rssi.ru/GCTC/gctc_e.htm\"&gt;Star City&lt;/a&gt;.",
           pubDate: new Date("Tue, 03 Jun 2003 09:39:21 GMT"),
-          my_tag: "This is my tag"
-        }, {
-          id: "http://liftoff.msfc.nasa.gov/2003/05/30.html#item572",
-          description: "Sky watchers in Europe, Asia, and parts of Alaska and Canada will experience a &lt;a href=\"http://science.nasa.gov/headlines/y2003/30may_solareclipse.htm\"&gt;partial eclipse of the Sun&lt;/a&gt; on Saturday, May 31st.",
-          pubDate: new Date("Fri, 30 May 2003 11:06:42 GMT")
-        }, {
-          id: "http://liftoff.msfc.nasa.gov/2003/05/27.html#item571",
-          title: "The Engine That Does More",
-          link: "http://liftoff.msfc.nasa.gov/news/2003/news-VASIMR.asp",
-          description: "Before man travels to Mars, NASA hopes to design new engines that will let us fly through the Solar System more quickly.  The proposed VASIMR engine would do that.",
-          pubDate: new Date("Tue, 27 May 2003 08:37:32 GMT")
-        }, {
-          id: "http://liftoff.msfc.nasa.gov/2003/05/20.html#item570",
-          title: "Astronauts' Dirty Laundry",
-          link: "http://liftoff.msfc.nasa.gov/news/2003/news-laundry.asp",
-          description: "Compared to earlier spacecraft, the International Space Station has many luxuries, but laundry facilities are not one of them.  Instead, astronauts have other options.",
-          pubDate: new Date("Tue, 20 May 2003 08:56:02 GMT")
+          medias: [
+            "http://www.example.com/image.jpg"
+          ]
         }]
       }
     },
     atom: {
       name: "Atom (1.0)",
-      file: "atom-example-extended.xml",
+      file: "atom-example-media.xml",
       expected: {
         type: "atom",
         id: "urn:uuid:60a76c80-d399-11d9-b91C-0003939e0af6",
@@ -63,13 +49,15 @@ describe('Extended feed tests', function(){
           link: "http://example.org/2003/12/13/atom03",
           description: "Some text.",
           pubDate: new Date("2003-12-13T18:30:02Z"),
-          my_tag: "This is my tag"
+          medias: [
+            "http://www.example.com/image.jpg"
+          ]
         }]
       }
     },
     rdf: {
       name: "RDF test",
-      file: "rdf-example-extended.xml",
+      file: "rdf-example-media.xml",
       expected: {
         type: "rdf",
         id: "",
@@ -80,7 +68,9 @@ describe('Extended feed tests', function(){
             title: "Music Equipment Repair and Consignment",
             link: "http://sfbay.craigslist.org/sby/muc/2681301534.html",
             description: "San Jose Rock Shop offers musical instrument repair and consignment! (408) 215-2065<br> <br> We are pleased to announce our NEW LOCATION: 1199 N 5th st. San Jose, ca 95112. Please call ahead, by appointment only.<br> <br> Recently featured by Metro Newspaper in their 2011 Best of the Silicon Valley edition see it online here:<br> <a href=\"http://www.metroactive.com/best-of-silicon-valley/2011/music-nightlife/editor-picks.html\" rel=\"nofollow\">http://www.metroactive.com/best-of-silicon-valley/2011/music-nightlife/editor-picks.html</a><br> <br> Guitar Set up (acoustic and electronic) $40!<!-- END CLTAGS -->",
-            my_tag: "This is my tag"
+            medias: [
+              "http://www.example.com/image.jpg"
+            ]
           },
           {
             title: "Ride Offered - Oakland/BART to LA/SFV - TODAY 3PM 11/04 (oakland north / temescal)",
@@ -93,11 +83,7 @@ describe('Extended feed tests', function(){
   };
 
   function parse(xml, cb) {
-    var handler = new FeedHandler(cb, {
-      extensions: [
-        {input: "my:tag", output: "my_tag"}
-      ]
-    });
+    var handler = new FeedHandler(cb);
 
     try {
       new htmlparser2.Parser(handler, {xmlMode: true}).parseComplete(xml);
